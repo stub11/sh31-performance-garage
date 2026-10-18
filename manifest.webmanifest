@@ -1,0 +1,19 @@
+{
+  "name": "SH31 Performance Garage",
+  "short_name": "SH31",
+  "description": "Шинный сервис 31 — презентационный сайт.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0c0b",
+  "theme_color": "#c9fb52",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
