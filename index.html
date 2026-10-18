@@ -8,6 +8,12 @@
 <meta name="description" content="Шинный сервис 31 — шиномонтаж, балансировка и ремонт колёс в Белгороде. Новый дизайн сайта. Онлайн-запись временно приостановлена."/>
 <meta name="robots" content="noindex,nofollow"/>
 <title>Шинный сервис 31 — Точность в каждом обороте</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<link rel="apple-touch-icon" href="./icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SH31">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 :root{--bg:#0a0c0b;--bg2:#121513;--surface:#171a17;--line:rgba(233,241,220,.15);--ink:#f5f6ed;--muted:#9ca399;--acid:#c9fb52;--acid-dark:#1f2b08;--container:1320px;--ease:cubic-bezier(.2,.75,.2,1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}html:has(.nav.open){scroll-behavior:auto}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'Segoe UI',Arial,sans-serif;overflow-x:hidden}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}a{color:inherit;text-decoration:none}img,svg{display:block}button:focus-visible,a:focus-visible{outline:2px solid var(--acid);outline-offset:4px}
@@ -128,7 +134,7 @@
  <div class="location-details reveal"><div class="eyebrow mono">03 / Найти мастерскую</div><h2 class="section-title">МЫ<br>РЯДОМ.</h2><p class="address">Белгород,<br>Железнодорожная улица, 4</p><p class="city">Шинный сервис 31 · Россия</p><div class="location-links"><a class="btn btn-main" href="https://yandex.ru/maps/?text=%D0%91%D0%B5%D0%BB%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%2C%20%D0%96%D0%B5%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B4%D0%BE%D1%80%D0%BE%D0%B6%D0%BD%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%204" target="_blank" rel="noopener noreferrer">Построить маршрут <span class="btn-arrow">↗</span></a></div></div>
  <div class="location-graphic reveal"><span class="map-pin"></span><span class="map-legend">BELGOROD / ЖЕЛЕЗНОДОРОЖНАЯ, 4 · СХЕМА, НЕ КАРТА</span></div>
 </div></div></section>
-</main>
+<section class="section" id="install"><div class="frame"><div class="eyebrow mono">04 / Установка на смартфон</div><h2 class="section-title">SH31<br>В ТЕЛЕФОНЕ.</h2><p class="section-description" style="max-width:680px;margin-top:24px">Android: откройте меню Chrome и выберите «Установить приложение». iPhone: в Safari нажмите «Поделиться» → «На экран Домой». Этот PWA пока показывает услуги и адрес; онлайн-запись приостановлена до переноса данных в РФ.</p></div></section></main>
 <footer class="footer"><div class="frame"><div class="footer-main"><a class="brand" href="#top"><div class="brand-mark">31</div><div class="brand-name">ШИННЫЙ<br>СЕРВИС <small>Белгород / SH31</small></div></a><div class="footer-tag mono">СДЕЛАНО ДЛЯ ДОРОГИ. С УВАЖЕНИЕМ К ДЕТАЛЯМ.</div></div><div class="footer-wordmark" aria-hidden="true">SHINNY SERVICE 31</div><div class="footer-bottom"><span>© 2026 ШИННЫЙ СЕРВИС 31 / КОНЦЕПТ</span><span class="privacy">Демонстрационный лендинг не отправляет формы, не использует аналитику и не собирает персональные данные.</span></div></div></footer>
 
 <div class="mobile-dock" aria-label="Быстрые действия">
@@ -154,5 +160,6 @@ if(!r.matches&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){co
 let toastTimer;document.querySelectorAll('.service').forEach(link=>link.addEventListener('click',()=>{const toast=document.getElementById('toast');toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),4600)}));
 })();
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
 </body>
 </html>
