@@ -111,6 +111,14 @@
  .picker-options button{padding-inline:2px}
 }
 @media(prefers-reduced-motion:reduce){.wheel-photo{animation:none!important}}
+
+/* Customer-first service shortcuts */
+.trust-card{display:flex;flex-direction:column;align-items:flex-start;min-height:225px}
+.trust-card h3{font-size:clamp(20px,2vw,25px)}
+.trust-card p{flex:1}
+.trust-link{display:inline-flex;align-items:center;margin-top:15px;min-height:43px;padding:10px 13px;border-radius:10px;background:rgba(201,251,82,.12);border:1px solid rgba(201,251,82,.36);color:var(--acid);font-size:13px;font-weight:800}
+.trust-link:hover{background:rgba(201,251,82,.22)}
+@media(max-width:760px){.trust-strip{padding:18px 0}.trust-grid{gap:10px}.trust-card{min-height:0;padding:16px 18px}.trust-card h3{font-size:21px;margin:12px 0 6px}.trust-card p{font-size:13px;line-height:1.5}.trust-link{margin-top:9px;min-height:42px}}
 </style>
 <meta name="sh31-release" content="2026-10-18-wheel-pwa-retry-1545"/>
 </head>
@@ -159,13 +167,11 @@
 </section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><b>ШИНОМОНТАЖ</b><em>✳</em><b>БАЛАНСИРОВКА</b><em>✳</em><b>РЕМОНТ КОЛЁС</b><em>✳</em><b>ТОЧНОСТЬ В КАЖДОМ ОБОРОТЕ</b><em>✳</em><b>ШИНОМОНТАЖ</b><em>✳</em><b>БАЛАНСИРОВКА</b><em>✳</em><b>РЕМОНТ КОЛЁС</b><em>✳</em><b>ТОЧНОСТЬ В КАЖДОМ ОБОРОТЕ</b><em>✳</em></div></div>
 
-<section class="trust-strip"><div class="frame">
- <div class="trust-grid">
-  <article class="trust-card reveal"><b>01</b><h3>Быстрое понимание</h3><p>На мобильном экране важное видно сразу: услуги, адрес, маршрут и текущий статус записи.</p></article>
-  <article class="trust-card reveal"><b>02</b><h3>Чёткие действия</h3><p>Крупные кнопки и нижняя панель помогают быстро перейти к услугам и адресу даже одной рукой.</p></article>
-  <article class="trust-card reveal"><b>03</b><h3>Без лишнего шума</h3><p>Никаких форм, трекеров и всплывающего спама. Только презентация сервиса и понятная навигация.</p></article>
- </div>
-</div></section>
+<section class="trust-strip" aria-label="Быстрый доступ к услугам"><div class="frame"><div class="trust-grid">
+<article class="trust-card reveal"><b>01 / R13–R21</b><h3>Подбор шиномонтажа</h3><p>Выберите диаметр диска на первом экране и посмотрите ориентировочную цену.</p><a class="trust-link" href="#wheelPicker">Выбрать размер ↗</a></article>
+<article class="trust-card reveal"><b>02 / УСЛУГИ</b><h3>Ремонт и балансировка</h3><p>Ремонт проколов, балансировка и шиномонтаж. Услуги и примерные цены собраны в одном месте.</p><a class="trust-link" href="#services">Посмотреть услуги ↗</a></article>
+<article class="trust-card reveal"><b>03 / БЕЛГОРОД</b><h3>Найти мастерскую</h3><p>Железнодорожная улица, 4. Откройте маршрут и доберитесь до сервиса.</p><a class="trust-link" href="#location">Построить маршрут ↗</a></article>
+</div></div></section>
 <section class="section services" id="services"><div class="frame">
  <div class="section-heading reveal"><div><div class="eyebrow mono">01 / Наши услуги</div><h2 class="section-title">РАБОТАЕМ<br>С КОЛЁСАМИ.</h2></div><p class="section-description">Всё необходимое для уверенной поездки — от быстрого ремонта прокола до комплексного шиномонтажа.</p></div>
  <div class="service-list" id="serviceList">
