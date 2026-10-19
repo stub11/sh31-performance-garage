@@ -42,6 +42,35 @@
 @media(max-width:410px){.hero{min-height:810px}.hero .frame{min-height:810px}.hero-copy{padding:145px 0 330px}.hero h1{font-size:clamp(60px,14.5vw,86px)}.hero-lede{font-size:13px}.hero-actions{grid-template-columns:1fr}.wheel-stage{inset:328px -34% 0 -22%}.wheel-motion{width:118vw}.service-name{font-size:20px}.service-cost{font-size:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-track,.wheel-svg,.method-visual:after,.method-ring:before,.scroll-icon:after{animation:none!important}.reveal{opacity:1;transform:none;transition:none}.btn,.service,.toast{transition:none}}
 .wheel-photo{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 25px 32px rgba(0,0,0,.45)) drop-shadow(0 0 20px rgba(201,251,82,.1));animation:wheelRealSpin 32s linear infinite}@keyframes wheelRealSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.wheel-photo{animation:none}}
+
+/* Mobile release polish: preserve readable actions and keep wheel as background artwork. */
+@media(max-width:760px){
+ .hero{min-height:970px}.hero .frame{min-height:970px}
+ .hero-copy{padding-bottom:355px}
+ .wheel-stage{inset:370px -12% 10px -8%;overflow:hidden}
+ .wheel-motion{width:min(92vw,470px);left:56%;top:68%;filter:drop-shadow(-8px 18px 28px rgba(0,0,0,.55))}
+ .orbital,.orbital.two,.orbital.three{left:56%;top:68%}
+ .wheel-label{bottom:13%;left:50%;width:90%;pointer-events:none}
+ .wheel-label strong{font-size:clamp(27px,8vw,38px)}
+ .mobile-dock{left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));padding:5px;border-radius:17px}
+ .mobile-dock nav a{min-height:44px;font-size:13px}
+ .hero-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .hero-metrics .metric:last-child{grid-column:1/-1}
+ .metric{min-width:0;padding:11px 13px}
+ .metric strong{font-size:19px}
+ .metric span{font-size:9px;letter-spacing:.04em}
+ .hero-actions .btn{min-height:53px}
+ .topline{padding-inline:8px;text-align:center}
+}
+@media(max-width:410px){
+ .hero{min-height:1010px}.hero .frame{min-height:1010px}
+ .hero-copy{padding-bottom:370px}
+ .wheel-stage{inset:400px -10% 8px -7%}
+ .wheel-motion{width:92vw;left:55%;top:68%}
+ .wheel-label{bottom:12%}
+ .hero-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:350px){.wheel-motion{width:90vw}.hero h1{font-size:clamp(54px,14vw,67px)}}
 </style>
 <meta name="sh31-release" content="2026-10-18-wheel-pwa-retry-1545"/>
 </head>
@@ -72,7 +101,7 @@
   <div class="hero-metrics reveal" aria-label="Ключевые преимущества">
    <div class="metric"><strong>5 услуг</strong><span>Быстро и по делу</span></div>
    <div class="metric"><strong>Белгород</strong><span>Железнодорожная, 4</span></div>
-   <div class="metric"><strong>0 форм</strong><span>Без сбора персональных данных</span></div>
+   <div class="metric"><strong>Удобно</strong><span>Маршрут в один клик</span></div>
   </div>
   <div class="hero-actions"><a class="btn btn-main" href="#services">Смотреть услуги <span class="btn-arrow">↗</span></a><a class="btn btn-line" href="#location">Как нас найти <span class="btn-arrow">→</span></a></div>
  </div></div>
