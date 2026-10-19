@@ -71,6 +71,46 @@
  .hero-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:350px){.wheel-motion{width:90vw}.hero h1{font-size:clamp(54px,14vw,67px)}}
+
+/* Functional hero: the wheel is a backdrop for choosing a service, not a standalone section. */
+.hero{min-height:750px;height:auto}.hero .frame{min-height:750px}
+.hero-copy{width:min(760px,100%);padding:155px 0 95px}
+.hero h1{position:relative;z-index:5;text-shadow:0 5px 30px #080c09,0 15px 60px #080c09}
+.wheel-stage{inset:0;z-index:0;overflow:hidden;opacity:.74}
+.wheel-motion{left:78%;top:50%;width:min(57vw,740px)}
+.wheel-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b0f0c 0%,rgba(11,15,12,.83) 35%,rgba(11,15,12,.15) 80%),linear-gradient(0deg,#0b0f0c 0%,transparent 24%);pointer-events:none}
+.wheel-label,.wheel-index{display:none}
+.hero-lede{max-width:510px;text-shadow:0 2px 18px #050805}
+.hero-metrics{max-width:640px}.hero-actions{margin-top:18px}
+.wheel-picker{position:relative;z-index:6;width:min(590px,100%);padding:17px 19px;margin:24px 0;border:1px solid rgba(201,251,82,.32);border-radius:18px;background:rgba(9,14,10,.84);backdrop-filter:blur(12px);box-shadow:0 15px 45px rgba(0,0,0,.3)}
+.picker-top,.picker-result{display:flex;align-items:center;justify-content:space-between;gap:12px}.picker-top{color:#b9c9af;font-size:11px}.picker-selected{color:var(--acid)}
+.picker-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.picker-options button{padding:12px 7px;border-radius:10px;border:1px solid #485543;background:#182019;color:#f3f7ed;cursor:pointer;font-size:14px;font-weight:800;min-height:44px}
+.picker-options button[aria-pressed="true"]{background:var(--acid);border-color:var(--acid);color:#0d1606}
+.picker-result{font-weight:800;font-size:14px}.picker-result a{padding:8px 12px;border-radius:9px;border:1px solid rgba(201,251,82,.45);color:var(--acid);white-space:nowrap;font-size:12px}
+.picker-hint{font-size:10px;line-height:1.45;color:#a7b3a3;margin:8px 0 0}
+@media(max-width:760px){
+ .hero,.hero .frame{min-height:0!important}
+ .hero-copy{padding:132px 0 95px!important}
+ .hero h1{font-size:clamp(62px,14vw,102px)}
+ .wheel-stage{inset:0!important;opacity:.53}
+ .wheel-motion{left:76%!important;top:41%!important;width:104vw!important}
+ .wheel-stage:after{background:linear-gradient(90deg,#0b0f0c 0%,rgba(11,15,12,.68) 55%,rgba(11,15,12,.18) 100%),linear-gradient(0deg,#0b0f0c 0%,transparent 35%)}
+ .wheel-picker{margin:18px 0;padding:14px 12px;background:rgba(8,13,10,.91)}
+ .picker-options button{font-size:12px}
+ .hero-metrics{display:none}
+ .hero-actions{display:grid;grid-template-columns:1fr 1fr}
+ .hero-actions .btn{font-size:11px;padding:0 8px;gap:7px}
+ .hero-low{bottom:12px}.hero-low span{font-size:9px}
+}
+@media(max-width:410px){
+ .hero-copy{padding:129px 0 92px!important}
+ .wheel-motion{left:77%!important;top:38%!important;width:114vw!important}
+ .hero h1{font-size:clamp(52px,13.7vw,70px)}
+ .picker-result{font-size:12px}
+ .picker-options button{padding-inline:2px}
+}
+@media(prefers-reduced-motion:reduce){.wheel-photo{animation:none!important}}
 </style>
 <meta name="sh31-release" content="2026-10-18-wheel-pwa-retry-1545"/>
 </head>
@@ -98,6 +138,16 @@
   <h1>ДЕРЖИМ<br><span class="last">ДОРОГУ<span class="dot">.</span></span></h1>
   <p class="hero-lede">Шиномонтаж, балансировка и ремонт колёс. Точная работа с тем, от чего зависит уверенность на дороге.</p>
   <div class="hero-status mono"><span class="spark"></span> Онлайн-запись временно приостановлена</div>
+<div class="wheel-picker" id="wheelPicker" aria-label="Подбор услуги по диаметру колеса">
+ <div class="picker-top"><span class="mono">ПОДБЕРИТЕ ШИНОМОНТАЖ</span><span class="picker-selected mono" id="pickerSelection">R16–R18</span></div>
+ <div class="picker-options" role="group" aria-label="Диаметр диска">
+  <button type="button" data-size="small">R13–15</button>
+  <button type="button" data-size="medium" aria-pressed="true">R16–18</button>
+  <button type="button" data-size="large">R19–21</button>
+ </div>
+ <div class="picker-result"><span id="pickerPrice">Ориентир: от 2 200 ₽</span><a id="pickerLink" href="#service-r16" aria-label="Посмотреть шиномонтаж R16–R18">Подробнее ↗</a></div>
+ <p class="picker-hint">Цены предварительные; точную стоимость подтвердит мастер.</p>
+</div>
   <div class="hero-metrics reveal" aria-label="Ключевые преимущества">
    <div class="metric"><strong>5 услуг</strong><span>Быстро и по делу</span></div>
    <div class="metric"><strong>Белгород</strong><span>Железнодорожная, 4</span></div>
@@ -105,7 +155,7 @@
   </div>
   <div class="hero-actions"><a class="btn btn-main" href="#services">Смотреть услуги <span class="btn-arrow">↗</span></a><a class="btn btn-line" href="#location">Как нас найти <span class="btn-arrow">→</span></a></div>
  </div></div>
- <div class="hero-pulse"><span class="pulse"></span> Сайт оптимизирован для смартфонов</div><div class="hero-low"><span class="mono">31 / WHEEL SERVICE</span><i></i><span class="mono">Точность в каждом обороте</span><span class="scroll-ind mono">Листайте вниз <span class="scroll-icon"></span></span></div>
+ <div class="hero-low"><span class="mono">31 / WHEEL SERVICE</span><i></i><span class="mono">Точность в каждом обороте</span><span class="scroll-ind mono">Листайте вниз <span class="scroll-icon"></span></span></div>
 </section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><b>ШИНОМОНТАЖ</b><em>✳</em><b>БАЛАНСИРОВКА</b><em>✳</em><b>РЕМОНТ КОЛЁС</b><em>✳</em><b>ТОЧНОСТЬ В КАЖДОМ ОБОРОТЕ</b><em>✳</em><b>ШИНОМОНТАЖ</b><em>✳</em><b>БАЛАНСИРОВКА</b><em>✳</em><b>РЕМОНТ КОЛЁС</b><em>✳</em><b>ТОЧНОСТЬ В КАЖДОМ ОБОРОТЕ</b><em>✳</em></div></div>
 
@@ -121,9 +171,9 @@
  <div class="service-list" id="serviceList">
  <a href="#booking" class="service reveal"><span class="service-num">01</span><div><div class="service-name">Ремонт прокола</div><div class="service-sub">Ориентировочно 30 минут</div></div><div class="service-cost"><span>ОТ</span>600 ₽</div><span class="service-go">↗</span></a>
  <a href="#booking" class="service reveal"><span class="service-num">02</span><div><div class="service-name">Балансировка колёс</div><div class="service-sub">Ориентировочно 30 минут</div></div><div class="service-cost"><span>ОТ</span>1 000 ₽</div><span class="service-go">↗</span></a>
- <a href="#booking" class="service reveal"><span class="service-num">03</span><div><div class="service-name">Шиномонтаж R13–R15</div><div class="service-sub">Ориентировочно 60 минут</div></div><div class="service-cost"><span>ОТ</span>1 600 ₽</div><span class="service-go">↗</span></a>
- <a href="#booking" class="service reveal"><span class="service-num">04</span><div><div class="service-name">Шиномонтаж R16–R18</div><div class="service-sub">Ориентировочно 60 минут</div></div><div class="service-cost"><span>ОТ</span>2 200 ₽</div><span class="service-go">↗</span></a>
- <a href="#booking" class="service reveal"><span class="service-num">05</span><div><div class="service-name">Шиномонтаж R19–R21</div><div class="service-sub">Ориентировочно 90 минут</div></div><div class="service-cost"><span>ОТ</span>2 800 ₽</div><span class="service-go">↗</span></a>
+ <a href="#booking" class="service reveal" id="service-r13"><span class="service-num">03</span><div><div class="service-name">Шиномонтаж R13–R15</div><div class="service-sub">Ориентировочно 60 минут</div></div><div class="service-cost"><span>ОТ</span>1 600 ₽</div><span class="service-go">↗</span></a>
+ <a href="#booking" class="service reveal" id="service-r16"><span class="service-num">04</span><div><div class="service-name">Шиномонтаж R16–R18</div><div class="service-sub">Ориентировочно 60 минут</div></div><div class="service-cost"><span>ОТ</span>2 200 ₽</div><span class="service-go">↗</span></a>
+ <a href="#booking" class="service reveal" id="service-r19"><span class="service-num">05</span><div><div class="service-name">Шиномонтаж R19–R21</div><div class="service-sub">Ориентировочно 90 минут</div></div><div class="service-cost"><span>ОТ</span>2 800 ₽</div><span class="service-go">↗</span></a>
  </div>
  <p class="service-note mono">* Цены и длительность ориентировочные, требуют подтверждения владельцем сервиса.</p>
 </div></section>
@@ -164,5 +214,8 @@ let toastTimer;document.querySelectorAll('.service').forEach(link=>link.addEvent
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
+<script>
+(()=>{const choices={small:{label:'R13–R15',price:'Ориентир: от 1 600 ₽',href:'#service-r13'},medium:{label:'R16–R18',price:'Ориентир: от 2 200 ₽',href:'#service-r16'},large:{label:'R19–R21',price:'Ориентир: от 2 800 ₽',href:'#service-r19'}};const root=document.getElementById('wheelPicker');if(!root)return;root.querySelectorAll('[data-size]').forEach(btn=>btn.addEventListener('click',()=>{const data=choices[btn.dataset.size];root.querySelectorAll('[data-size]').forEach(x=>x.setAttribute('aria-pressed',String(x===btn)));document.getElementById('pickerSelection').textContent=data.label;document.getElementById('pickerPrice').textContent=data.price;const link=document.getElementById('pickerLink');link.href=data.href;link.setAttribute('aria-label','Посмотреть шиномонтаж '+data.label)}));})();
+</script>
 </body>
 </html>
